@@ -1,0 +1,19 @@
+type:
+  Message:
+  type: object
+  displayName: Message
+  description: This is a message object
+  properties:
+    id: number
+    content:
+      type: string
+      displayName: Content
+      description: This is the message content
+    user:
+      type: User
+      displayName: User
+      description: User who created the message
+    createdDateTime:
+      type: datetime-only
+      displayName: Created Date & Time
+      description: This is the date and time when message is created

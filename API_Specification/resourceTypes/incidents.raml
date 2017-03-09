@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+displayName: Incident Object
+description: This object contains details of an incident
+properties:
+  id: string
+  type: string
+  priority: string
+  createdDate: datetime-only
+  createdBy: string
+  lastUpdatedDate: datetime-only
+  lastUpdatedBy: string
+  assignedTo: string
+  events: !include event.raml

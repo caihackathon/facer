@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+type: object
+displayName: Error
+description: This is the error object return in case of unsuccessful API call
+properties:
+  code:
+    type: number
+    displayName: Application error code
+    description: This is the specific application error code
+  message:
+    type: string
+    displayName: Application error message
+    description: This is the specific application error message
+  requestParameters?:
+    type: object
+    displayName: Reqeust parameters
+    description: These are the request parameters recieved in the original request

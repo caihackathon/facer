@@ -1,0 +1,42 @@
+#%RAML 1.0 DataType
+type: object
+displayName: User Details
+description: This is user object
+properties:
+  id:
+    required: false
+  firstName:
+    type: string
+    displayName: First Name
+    description: This is the user's first name
+  lastName:
+    type: string
+    displayName: Last Name
+    description: This is the user's last name
+  role:
+    type: string
+    displayName: Role
+    description: This is the role of the user
+  preferences?:
+    type: object
+    displayName: Message Pull Frequency
+    description: This is the frequency with which messages are pulled from the user device
+    properties:
+      messagePullFrequency:
+        type: number
+        displayName: Message Pull Frequency
+        description: This is the frequency with which messages are pulled from the user device
+      quietHours:
+        type: object
+        displayName: Quiet Hours
+        description: This object represents the quiet hours of the user
+        properties:
+          startTime:
+            type: time-only
+          endTime:
+            type: time-only
+example
+  id:1
+  firstName: Raghunatha
+  lastName: Tadipatri
+  role: Developer

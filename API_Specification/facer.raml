@@ -1,0 +1,310 @@
+#%RAML 1.0
+title: Facer
+version: v1
+baseUri: http://api.facer.com
+securitySchemes:
+  basic: !include securitySchemes/basic.raml
+types:
+  User: !include resourceTypes/user.raml
+  Error: !include resourceTypes/error.raml
+  Application: !include resourceTypes/application.raml
+  Event: !include resourceTypes/event.raml
+  Comment: !include resourceTypes/comment.raml
+  Incident: !include resourceTypes/incidents.raml
+
+securedBy: [basic]
+/users:
+  get:
+    displayName: Get all users
+    description: This call retrieves the list of all users
+    responses:
+      200:
+        description: This is the successful response to the get users call.
+        body:
+          application/json:
+            type: User[]
+      422:
+        description: This is a application error
+        body:
+          application/json:
+            type: Error
+      401:
+        description: Authentication error
+      403:
+        description: Authorization error
+  /{id}:
+    get:
+      displayName: Get user details
+      description: This call retrieves the details of an user
+      responses:
+        200:
+          description: This is successful response to get an user
+          body:
+            application/json:
+              type: User
+        422:
+          description: This is a application error
+          body:
+            application/json:
+              type: Error
+        401:
+          description: Authentication error
+        403:
+          description: Authorization error
+    post:
+      body:
+        application/json:
+          type: User
+      responses:
+        200:
+          description: This is a successful response of an user update
+          body:
+            application/json:
+              type: User
+        422:
+          description: This is a application error
+          body:
+            application/json:
+              type: Error
+        401:
+          description: Authentication error
+        403:
+          description: Authorization error
+    put:
+      body:
+        application/json:
+          type: User
+      responses:
+        200:
+          description: This is a successful response of an user update
+          body:
+            application/json:
+              type: User
+        422:
+          description: This is a application error
+          body:
+            application/json:
+              type: Error
+        401:
+          description: Authentication error
+        403:
+          description: Authorization error
+    delete:
+      responses:
+        200:
+          description: This is a successful response to the user deletion
+        422:
+          description: This is a application error
+          body:
+            application/json:
+              type: Error
+        401:
+          description: Authentication error
+        403:
+          description: Authorization error
+  /{id}/applications:
+    get:
+      responses:
+        200:
+          description: This is a successful response to the retrieve user applications
+          body:
+            application/json:
+              type: Application[]
+        422:
+          description: This is a application error
+          body:
+            application/json:
+              type: Error
+        401:
+          description: Authentication error
+        403:
+          description: Authorization error
+  /{id}/alerts:
+    get:
+  /{id}/messages:
+    get:
+/events:
+  get:
+    responses:
+      200:
+        description: This retrieves all the alerts.
+        body:
+          application/json:
+            type: Event[]
+      422:
+        description: This is a application error
+        body:
+          application/json:
+            type: Error
+      401:
+        description: Authentication error
+      403:
+        description: Authorization error
+  /{id}:
+    get:
+      responses:
+        200:
+          description: This retrieves an alert details.
+          body:
+            application/json:
+              type: Event
+        422:
+          description: This is a application error
+          body:
+            application/json:
+              type: Error
+        401:
+          description: Authentication error
+        403:
+          description: Authorization error
+    post:
+      body:
+        application/json:
+          type: Event
+      responses:
+        200:
+          description: This is a successful response of a new alert post
+          body:
+            application/json:
+              type: Event
+        422:
+          description: This is a application error
+          body:
+            application/json:
+              type: Error
+        401:
+          description: Authentication error
+        403:
+          description: Authorization error
+    put:
+      body:
+        application/json:
+          type: Event
+      responses:
+        200:
+          description: This is a successful response of an alert update
+          body:
+            application/json:
+              type: Event
+        422:
+          description: This is a application error
+          body:
+            application/json:
+              type: Error
+        401:
+          description: Authentication error
+        403:
+          description: Authorization error
+    delete:
+      responses:
+        200:
+          description: This is a successful response of alert deltion
+        422:
+          description: This is a application error
+          body:
+            application/json:
+              type: Error
+        401:
+          description: Authentication error
+        403:
+          description: Authorization error
+/incidents:
+  get:
+    responses:
+      200:
+        description: This is the list of all incidents
+        body:
+          application/json:
+            type: Incident[]
+  /{id}:
+    get:
+      responses:
+        200:
+          description: This retrieves an alert details.
+          body:
+            application/json:
+              type: Incident
+        422:
+          description: This is a application error
+          body:
+            application/json:
+              type: Error
+        401:
+          description: Authentication error
+        403:
+          description: Authorization error
+    post:
+      body:
+        application/json:
+          type: Incident
+      responses:
+        200:
+          description: This is a successful response of a new alert post
+          body:
+            application/json:
+              type: Incident
+        422:
+          description: This is a application error
+          body:
+            application/json:
+              type: Error
+        401:
+          description: Authentication error
+        403:
+          description: Authorization error
+    put:
+      body:
+        application/json:
+          type: Incident
+      responses:
+        200:
+          description: This is a successful response of an alert update
+          body:
+            application/json:
+              type: Incident
+        422:
+          description: This is a application error
+          body:
+            application/json:
+              type: Error
+        401:
+          description: Authentication error
+        403:
+          description: Authorization error
+
+    delete:
+      queryParameters:
+        incidentId: string
+      responses:
+        200:
+          description: This is a successful response of incident deltion
+        422:
+          description: This is a application error
+          body:
+            application/json:
+              type: Error
+        401:
+          description: Authentication error
+        403:
+          description: Authorization error
+/applications:
+  get:
+  post:
+  put:
+  delete:
+/comments:
+  get:
+  post:
+  delete:
+  put:
+/clientLogs:
+  get:
+  post:
+  delete:
+/components:
+  get:
+/rules:
+  get:
+  post:
+  put:
+  delete:

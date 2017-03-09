@@ -1,0 +1,18 @@
+#%RAML 1.0 DataType
+type: object
+displayName: Event
+description: This is an event object
+properties:
+  id: string
+  application:
+    type: !include application.raml
+    displayName: Application
+    description: Application this event is related to.
+  priority:
+    type: string
+    displayName: Priority
+    description: Priority of the event
+    maxLength: 10
+    minLength: 1
+  comments:
+    type: [] !include comment.raml
