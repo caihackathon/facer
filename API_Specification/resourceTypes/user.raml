@@ -4,6 +4,9 @@ displayName: User Details
 description: This is user object
 properties:
   id:
+    type: string
+    minLength: 1
+    maxLength: 10
     required: false
   firstName:
     type: string
@@ -25,7 +28,7 @@ properties:
       messagePullFrequency:
         type: number
         displayName: Message Pull Frequency
-        description: This is the frequency with which messages are pulled from the user device
+        description: This is the frequency in seconds with which messages are pulled from the user device
       quietHours:
         type: object
         displayName: Quiet Hours
@@ -33,5 +36,9 @@ properties:
         properties:
           startTime:
             type: time-only
+            displayName: Start time
+            description: This is the start time of the quiet hours.
           endTime:
             type: time-only
+            displayName: End time
+            description: This is the end time of the quiet hours.

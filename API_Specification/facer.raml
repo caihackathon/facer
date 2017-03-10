@@ -24,6 +24,7 @@ securedBy: [basic]
         body:
           application/json:
             type: User[]
+            example: !include examples/users.json
       422:
         description: This is a application error
         body:
@@ -43,11 +44,13 @@ securedBy: [basic]
           body:
             application/json:
               type: User
+              example: !include examples/user.json
         422:
           description: This is a application error
           body:
             application/json:
               type: Error
+              example: !include examples/error.json
         401:
           description: Authentication error
         403:
@@ -62,6 +65,7 @@ securedBy: [basic]
           body:
             application/json:
               type: User
+              example: !include examples/user.json
         422:
           description: This is a application error
           body:
@@ -115,14 +119,14 @@ securedBy: [basic]
                 Example1:
                   description: "An example list for an user who is subscribed for IRIS, BACP and Cashiering applications"
                   value:
-                    [{"id":"100","name":"IRIS","status":"Green"},
-                    {"id":"101","name":"BACP","status":"Yellow"},
-                    {"id":"102","name":"Cashiering","status":"Red"}]
+                    [{"name":"IRIS","status":"Green"},
+                    {"name":"BACP","status":"Yellow"},
+                    {"name":"Cashiering","status":"Red"}]
                 Example2:
                   description: "An example list for an user who is subscribed for BACP and Cashiering applications"
                   value:
-                    [{"id":"101","name":"BACP","status":"Yellow"},
-                    {"id":"102","name":"Cashiering","status":"Red"}]
+                    [{"name":"BACP","status":"Yellow"},
+                    {"name":"Cashiering","status":"Red"}]
         422:
           description: This is a application error
           body:
@@ -314,11 +318,12 @@ securedBy: [basic]
         body:
           application/json:
             type: Error
+            example: !include examples/error.json
       401:
         description: Authentication error
       403:
         description: Authorization error
-  /{id}:
+  /{name}:
     get:
       responses:
         200:
@@ -332,11 +337,12 @@ securedBy: [basic]
           body:
             application/json:
               type: Error
+              example: !include examples/error.json
         401:
           description: Authentication error
         403:
           description: Authorization error
-  /{id}/components:
+  /{name}/components:
     get:
       responses:
         200:
@@ -350,6 +356,7 @@ securedBy: [basic]
           body:
             application/json:
               type: Error
+              example: !include examples/error.json
         401:
           description: Authentication error
         403:
@@ -382,11 +389,12 @@ securedBy: [basic]
         body:
           application/json:
             type: Error
+            example: !include examples/error.json
       401:
         description: Authentication error
       403:
         description: Authorization error
-  /{id}:
+  /{name}:
     get:
       responses:
         200:
@@ -400,6 +408,7 @@ securedBy: [basic]
           body:
             application/json:
               type: Error
+              example: !include examples/error.json
         401:
           description: Authentication error
         403:

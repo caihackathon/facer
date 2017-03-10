@@ -1,0 +1,27 @@
+[
+{
+  "id": "1000",
+  "firstName": "Christopher",
+  "lastName": "Vanderford",
+  "role": "Project Manager",
+  "preferences": {
+    "messagePullFrequency" : 10,
+    "quietHours":{
+      "startTime": "21:00:00",
+      "endTime": "06:00:00"
+    }
+  }
+},
+{
+  "id": "1001",
+  "firstName": "Joseph",
+  "lastName": "Wroblewski",
+  "role": "Architect",
+  "preferences": {
+    "messagePullFrequency" : 10,
+    "quietHours":{
+      "startTime": "22:30:00",
+      "endTime": "06:00:00"
+    }
+  }
+}]
