@@ -308,10 +308,7 @@ securedBy: [basic]
         body:
           application/json:
             type: Application[]
-            example:
-              [{"id":"100","name":"IRIS","status":"Green"},
-              {"id":"101","name":"BACP","status":"Yellow"},
-              {"id":"102","name":"Cashiering","status":"Red"}]
+            example: !include examples/applications.json
       422:
         description: This is a application error
         body:
@@ -329,12 +326,7 @@ securedBy: [basic]
           body:
             application/json:
               type: Application
-              example:
-                {
-                  id: "100",
-                  name: "IRIS",
-                  status: "Green"
-                }
+              example: !include examples/application.json
         422:
           description: This is a application error
           body:
@@ -352,22 +344,7 @@ securedBy: [basic]
           body:
             application/json:
               type: Component[]
-              example:
-                [{
-                  id: "100",
-                  type: "Database",
-                  status: "Green"
-                },
-                {
-                  id: "101",
-                  type: "Application",
-                  status: "Yellow"
-                },
-                {
-                  id: "102",
-                  type: "Network",
-                  status: "Green"
-                }]
+              example: !include examples/components.json
         422:
           description: This is a application error
           body:
@@ -399,22 +376,7 @@ securedBy: [basic]
         body:
           application/json:
             type: Component[]
-            example:
-              [{
-                id: "100",
-                type: "Database",
-                status: "Green"
-              },
-              {
-                id: "101",
-                type: "Application",
-                status: "Yellow"
-              },
-              {
-                id: "102",
-                type: "Network",
-                status: "Green"
-              }]
+            example: !include examples/components.json
       422:
         description: This is a application error
         body:
@@ -432,12 +394,7 @@ securedBy: [basic]
           body:
             application/json:
               type: Component
-              example:
-                {
-                  id: "100",
-                  type: "Database",
-                  status: "Green"
-                }
+              example: !include examples/component.json
         422:
           description: This is a application error
           body:
