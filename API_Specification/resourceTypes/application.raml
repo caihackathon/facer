@@ -3,10 +3,15 @@ type: object
 displayName: Application
 description: This is an application object
 properties:
-  id: string
+  id:
+    type: string
+    displayName: Applicaiton Id
+    description: This is the unique identifier for the application
   name:
     type: string
     displayName: Application Name
-    description: This is the name of the application
-  components:
-    type: array
+    description: This is the name of the application.
+  status:
+    type: string
+    displayName: Application Status
+    description: This is the status of the application. Possible values for the status are Green, Yellow and Red

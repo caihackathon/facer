@@ -11,6 +11,7 @@ types:
   Event: !include resourceTypes/event.raml
   Comment: !include resourceTypes/comment.raml
   Incident: !include resourceTypes/incidents.raml
+  Component: !include resourceTypes/component.raml
 
 securedBy: [basic]
 /users:
@@ -110,6 +111,18 @@ securedBy: [basic]
           body:
             application/json:
               type: Application[]
+              examples:
+                Example1:
+                  description: "An example list for an user who is subscribed for IRIS, BACP and Cashiering applications"
+                  value:
+                    [{"id":"100","name":"IRIS","status":"Green"},
+                    {"id":"101","name":"BACP","status":"Yellow"},
+                    {"id":"102","name":"Cashiering","status":"Red"}]
+                Example2:
+                  description: "An example list for an user who is subscribed for BACP and Cashiering applications"
+                  value:
+                    [{"id":"101","name":"BACP","status":"Yellow"},
+                    {"id":"102","name":"Cashiering","status":"Red"}]
         422:
           description: This is a application error
           body:
@@ -289,9 +302,81 @@ securedBy: [basic]
           description: Authorization error
 /applications:
   get:
-  post:
-  put:
-  delete:
+    responses:
+      200:
+        description: This call retrieves list of all applications.
+        body:
+          application/json:
+            type: Application[]
+            example:
+              [{"id":"100","name":"IRIS","status":"Green"},
+              {"id":"101","name":"BACP","status":"Yellow"},
+              {"id":"102","name":"Cashiering","status":"Red"}]
+      422:
+        description: This is a application error
+        body:
+          application/json:
+            type: Error
+      401:
+        description: Authentication error
+      403:
+        description: Authorization error
+  /{id}:
+    get:
+      responses:
+        200:
+          description: This call retrieves the details of a particular application.
+          body:
+            application/json:
+              type: Application
+              example:
+                {
+                  id: "100",
+                  name: "IRIS",
+                  status: "Green"
+                }
+        422:
+          description: This is a application error
+          body:
+            application/json:
+              type: Error
+        401:
+          description: Authentication error
+        403:
+          description: Authorization error
+  /{id}/components:
+    get:
+      responses:
+        200:
+          description: This call retrieves all the components of an application.
+          body:
+            application/json:
+              type: Component[]
+              example:
+                [{
+                  id: "100",
+                  type: "Database",
+                  status: "Green"
+                },
+                {
+                  id: "101",
+                  type: "Application",
+                  status: "Yellow"
+                },
+                {
+                  id: "102",
+                  type: "Network",
+                  status: "Green"
+                }]
+        422:
+          description: This is a application error
+          body:
+            application/json:
+              type: Error
+        401:
+          description: Authentication error
+        403:
+          description: Authorization error
 /comments:
   get:
   post:
@@ -301,10 +386,64 @@ securedBy: [basic]
   get:
   post:
   delete:
-/components:
-  get:
 /rules:
   get:
   post:
   put:
   delete:
+/components:
+  get:
+    responses:
+      200:
+        description: This call retrieves list of all components.
+        body:
+          application/json:
+            type: Component[]
+            example:
+              [{
+                id: "100",
+                type: "Database",
+                status: "Green"
+              },
+              {
+                id: "101",
+                type: "Application",
+                status: "Yellow"
+              },
+              {
+                id: "102",
+                type: "Network",
+                status: "Green"
+              }]
+      422:
+        description: This is a application error
+        body:
+          application/json:
+            type: Error
+      401:
+        description: Authentication error
+      403:
+        description: Authorization error
+  /{id}:
+    get:
+      responses:
+        200:
+          description: This call retrieves the details of a particular component.
+          body:
+            application/json:
+              type: Component
+              example:
+                {
+                  id: "100",
+                  type: "Database",
+                  status: "Green"
+                }
+        422:
+          description: This is a application error
+          body:
+            application/json:
+              type: Error
+        401:
+          description: Authentication error
+        403:
+          description: Authorization error
