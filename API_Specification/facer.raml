@@ -14,252 +14,110 @@ types:
   Component: !include resourceTypes/component.raml
 
 securedBy: [basic]
-/users:
+/applications:
+  displayName: Applications
+  description: This service provides information about the applications in the system
   get:
-    displayName: Get all users
-    description: This call retrieves the list of all users
+    displayName: Get Applications
+    description: Get applications based on the Query Parameters
+    queryParameters:
+      userId:
+        type: string
+        required: false
+        minLength: 3
+        maxLength: 15
     responses:
       200:
-        description: This is the successful response to the get users call.
+        description: This call retrieves list of applications based on the Query Parameters.
         body:
           application/json:
-            type: User[]
-            example: !include examples/users.json
+            type: Application[]
+            example: !include examples/applications.json
       422:
         description: This is a application error
         body:
           application/json:
             type: Error
+            example: !include examples/error.json
       401:
         description: Authentication error
       403:
         description: Authorization error
-  /{id}:
-    get:
-      displayName: Get user details
-      description: This call retrieves the details of an user
-      responses:
-        200:
-          description: This is successful response to get an user
-          body:
-            application/json:
-              type: User
-              example: !include examples/user.json
-        422:
-          description: This is a application error
-          body:
-            application/json:
-              type: Error
-              example: !include examples/error.json
-        401:
-          description: Authentication error
-        403:
-          description: Authorization error
-    post:
-      body:
-        application/json:
-          type: User
-      responses:
-        200:
-          description: This is a successful response of an user update
-          body:
-            application/json:
-              type: User
-              example: !include examples/user.json
-        422:
-          description: This is a application error
-          body:
-            application/json:
-              type: Error
-        401:
-          description: Authentication error
-        403:
-          description: Authorization error
-    put:
-      body:
-        application/json:
-          type: User
-      responses:
-        200:
-          description: This is a successful response of an user update
-          body:
-            application/json:
-              type: User
-        422:
-          description: This is a application error
-          body:
-            application/json:
-              type: Error
-        401:
-          description: Authentication error
-        403:
-          description: Authorization error
-    delete:
-      responses:
-        200:
-          description: This is a successful response to the user deletion
-        422:
-          description: This is a application error
-          body:
-            application/json:
-              type: Error
-        401:
-          description: Authentication error
-        403:
-          description: Authorization error
-  /{id}/applications:
-    get:
-      responses:
-        200:
-          description: This is a successful response to the retrieve user applications
-          body:
-            application/json:
-              type: Application[]
-              examples:
-                Example1:
-                  description: "An example list for an user who is subscribed for IRIS, BACP and Cashiering applications"
-                  value:
-                    [{"name":"IRIS","status":"Green"},
-                    {"name":"BACP","status":"Yellow"},
-                    {"name":"Cashiering","status":"Red"}]
-                Example2:
-                  description: "An example list for an user who is subscribed for BACP and Cashiering applications"
-                  value:
-                    [{"name":"BACP","status":"Yellow"},
-                    {"name":"Cashiering","status":"Red"}]
-        422:
-          description: This is a application error
-          body:
-            application/json:
-              type: Error
-        401:
-          description: Authentication error
-        403:
-          description: Authorization error
-  /{id}/alerts:
-    get:
-  /{id}/messages:
-    get:
-/events:
+/components:
+  displayName: Components
+  description: This resource provides access to the applciation components
   get:
+    displayName: Get Components
+    description: Get list of components based on the Query Parameters
+    queryParameters:
+      userId:
+        type: string
+        required: false
+        minLength: 3
+        maxLength: 15
+      applicationId:
+        type: string
+        minLength: 3
+        maxLength: 15
+        required: false
     responses:
       200:
-        description: This retrieves all the alerts.
+        description: This call retrieves list of components based on the Query Parameters.
         body:
           application/json:
-            type: Event[]
+            type: Component[]
+            example: !include examples/components.json
       422:
         description: This is a application error
         body:
           application/json:
             type: Error
+            example: !include examples/error.json
       401:
         description: Authentication error
       403:
         description: Authorization error
-  /{id}:
-    get:
-      responses:
-        200:
-          description: This retrieves an alert details.
-          body:
-            application/json:
-              type: Event
-        422:
-          description: This is a application error
-          body:
-            application/json:
-              type: Error
-        401:
-          description: Authentication error
-        403:
-          description: Authorization error
-    post:
-      body:
-        application/json:
-          type: Event
-      responses:
-        200:
-          description: This is a successful response of a new alert post
-          body:
-            application/json:
-              type: Event
-        422:
-          description: This is a application error
-          body:
-            application/json:
-              type: Error
-        401:
-          description: Authentication error
-        403:
-          description: Authorization error
-    put:
-      body:
-        application/json:
-          type: Event
-      responses:
-        200:
-          description: This is a successful response of an alert update
-          body:
-            application/json:
-              type: Event
-        422:
-          description: This is a application error
-          body:
-            application/json:
-              type: Error
-        401:
-          description: Authentication error
-        403:
-          description: Authorization error
-    delete:
-      responses:
-        200:
-          description: This is a successful response of alert deltion
-        422:
-          description: This is a application error
-          body:
-            application/json:
-              type: Error
-        401:
-          description: Authentication error
-        403:
-          description: Authorization error
 /incidents:
+  displayName: Incidents
+  description: This service provides the information about the incidents in the system
   get:
+    displayName: Get Incidents
+    description: Gets list of incidents based on the Query Paramters
+    queryParameters:
+      userId:
+        type: string
+        required: false
+        minLength: 3
+        maxLength: 15
+      applicationId:
+        type: string
+        minLength: 3
+        maxLength: 15
+        required: false
+      componentId:
+        type: string
+        minLength: 3
+        maxLength: 15
+        required: false
     responses:
       200:
-        description: This is the list of all incidents
+        description: This is the list of all incidents matching to the query criteria
         body:
           application/json:
             type: Incident[]
   /{id}:
+    displayName: Get Incident Details
+    description: Get the details of an incident
     get:
+      displayName: Get Incident Details
+      description: This call gets the details of an incident based on id
       responses:
         200:
           description: This retrieves an alert details.
           body:
             application/json:
               type: Incident
-        422:
-          description: This is a application error
-          body:
-            application/json:
-              type: Error
-        401:
-          description: Authentication error
-        403:
-          description: Authorization error
-    post:
-      body:
-        application/json:
-          type: Incident
-      responses:
-        200:
-          description: This is a successful response of a new alert post
-          body:
-            application/json:
-              type: Incident
+              example: !include examples/incident.json
         422:
           description: This is a application error
           body:
@@ -270,6 +128,8 @@ securedBy: [basic]
         403:
           description: Authorization error
     put:
+      displayName: Update Incident
+      description: This call updates the incident details
       body:
         application/json:
           type: Incident
@@ -290,8 +150,8 @@ securedBy: [basic]
           description: Authorization error
 
     delete:
-      queryParameters:
-        incidentId: string
+      displayName: Delete Incident
+      description: This call deletes the incident from the system
       responses:
         200:
           description: This is a successful response of incident deltion
@@ -300,115 +160,6 @@ securedBy: [basic]
           body:
             application/json:
               type: Error
-        401:
-          description: Authentication error
-        403:
-          description: Authorization error
-/applications:
-  get:
-    responses:
-      200:
-        description: This call retrieves list of all applications.
-        body:
-          application/json:
-            type: Application[]
-            example: !include examples/applications.json
-      422:
-        description: This is a application error
-        body:
-          application/json:
-            type: Error
-            example: !include examples/error.json
-      401:
-        description: Authentication error
-      403:
-        description: Authorization error
-  /{name}:
-    get:
-      responses:
-        200:
-          description: This call retrieves the details of a particular application.
-          body:
-            application/json:
-              type: Application
-              example: !include examples/application.json
-        422:
-          description: This is a application error
-          body:
-            application/json:
-              type: Error
-              example: !include examples/error.json
-        401:
-          description: Authentication error
-        403:
-          description: Authorization error
-  /{name}/components:
-    get:
-      responses:
-        200:
-          description: This call retrieves all the components of an application.
-          body:
-            application/json:
-              type: Component[]
-              example: !include examples/components.json
-        422:
-          description: This is a application error
-          body:
-            application/json:
-              type: Error
-              example: !include examples/error.json
-        401:
-          description: Authentication error
-        403:
-          description: Authorization error
-/comments:
-  get:
-  post:
-  delete:
-  put:
-/clientLogs:
-  get:
-  post:
-  delete:
-/rules:
-  get:
-  post:
-  put:
-  delete:
-/components:
-  get:
-    responses:
-      200:
-        description: This call retrieves list of all components.
-        body:
-          application/json:
-            type: Component[]
-            example: !include examples/components.json
-      422:
-        description: This is a application error
-        body:
-          application/json:
-            type: Error
-            example: !include examples/error.json
-      401:
-        description: Authentication error
-      403:
-        description: Authorization error
-  /{name}:
-    get:
-      responses:
-        200:
-          description: This call retrieves the details of a particular component.
-          body:
-            application/json:
-              type: Component
-              example: !include examples/component.json
-        422:
-          description: This is a application error
-          body:
-            application/json:
-              type: Error
-              example: !include examples/error.json
         401:
           description: Authentication error
         403:

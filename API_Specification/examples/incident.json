@@ -1,0 +1,12 @@
+{
+  "id": "IN10000001",
+  "type": "Unavailability",
+  "priority": "High",
+  "createdDate": "2017-03-22T11:01:01",
+  "createdBy": "gotoraghu",
+  "lastUpdatedDate": "2017-03-22T11:01:01",
+  "lastUpdatedBy": "gotoraghu",
+  "assignedTo": "rupaks",
+  "title": "Cashiering system is unavailable",
+  "details": "Due to a high volume of large canvas notice lookups the cashiering system crashed and is unavailable"
+}

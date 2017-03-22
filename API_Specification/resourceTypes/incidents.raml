@@ -1,13 +1,49 @@
 #%RAML 1.0 DataType
+type: object
 displayName: Incident Object
 description: This object contains details of an incident
 properties:
-  id: string
-  type: string
-  priority: string
-  createdDate: datetime-only
-  createdBy: string
-  lastUpdatedDate: datetime-only
-  lastUpdatedBy: string
-  assignedTo: string
-  events: !include event.raml
+  id:
+    type: string
+    displayName: Incident Id
+    description: Unique identifier for the Incident
+    minLength: 3
+    maxLength: 15
+  type:
+    type: string
+    displayName: Incident Type
+    description: Type of the Incident
+    enum: [Unavailability, Slowness]
+  title:
+    type: string
+    displayName: Incident Title
+    description: Title or short description of the incident
+  details:
+    type: string
+    displayName: Incident Details
+    description: Detailed description of the incident
+  priority:
+    type: string
+    displayName: Incident Priority
+    description: Priority of the Incident
+    enum: [High,Medium,Low]
+  createdDate:
+    type: datetime-only
+    displayName: Incident Created Date
+    description: Date & Time the incident was created
+  createdBy:
+    type: string
+    displayName: Incident Creator
+    description: User/System creating the Incident
+  lastUpdatedDate:
+    type: datetime-only
+    displayName: Incident Last Update Date
+    description: Date & Time the incident was last updated
+  lastUpdatedBy:
+    type: string
+    displayName: Incident Updator
+    description: User/System last updated the Incident
+  assignedTo:
+    type: string
+    displayName: Incident Assignee
+    description: User to which the incident is assigned to
