@@ -1,0 +1,95 @@
+Git
+============
+Git is a distributed revision control system.  This means that everybody keeps a copy of the entire repository on your machine, including the history of all previous changes.
+
+As a team, we could operate with just git installed on each of our machines, and not have a central server.  You'd just need agreement among the team on who would be the final keeper of the latest source code.  
+
+Since we're using GitHub as one of our respositories, we're treating it as the central repository that everyone uses for our code.  When you're working in Git, you'll be dealing with two respositories -- the local one on your machine; and the remote respository in GitHub.  
+
+The basic workflow is this:  
+	- Get the latest version of code from the remote repository (GitHub).  (The first time doing this, creates your local respository).
+	- Make changes.  Add changes to your local repository.
+	- Commit your changes to the local repository.
+	- Push your changes up to the remote repository (GitHub).
+
+Branching:
+Usually, branches will be created for changes.  You'll pull down the branch, make your changes and push them back to the same branch.  Once we're ready to go live, we'll merge the branch into the "master" branch, and push that into production.
+
+
+
+Getting Started
+===============
+
+Basic commands defined in facerServer wiki - https://github.com/caihackathon/facerServer/wiki/git---Command-Line
+
+There are several programs you can install to give you command-line access to git.  
+
+I'd recommend using cygwin.  Download and install cygwin, then follow the exercise below to do a quick walkthru of using git.
+
+
+
+
+Simple Exercise
+===============
+
+1.  After installing cygwin:
+
+    Open command-line window (cmd).
+
+    Switch to directory you'll be working in -- (e.g, C:\workspace)
+
+    bash
+
+2.  Use git from the command-line:
+
+    git clone https://github.com/caihackathon/facer				# Download latest copy of the "master" branch from facer project
+
+    git pull									# Downloads latest changes.  Not needed now, but get in the habit of doing this.
+
+    git branch									# Shows your local branches
+
+    git branch -a -v								# Shows both local and remote branches
+
+    git checkout -b my_first_branch						# Adds a new branch, and switches to it
+										
+		# WARNING:  Whenever you switch between branches, all the files associated with the branch get swapped
+		#	    This can be powerful -- allowing you to switch on different changes in different branches at the same time
+		#	     It can also be dangerous, if you forget the checkin a change before switch branches
+
+    git branch
+
+
+3.  Edit this file  -- Server_Team_GIT.txt.  Add your name at the bottom as proof you've changed it.
+
+
+4.  More git:
+
+    git add .									# Add all new or changed files to the local repository
+
+    git status
+
+    git commit -m "Added my name"						# Commit changes to local
+
+    git push origin master							# Push change into master branch of the remote repository
+
+		# NOTE:  "origin" is the shorthand name for where you initially downloaded the repository from
+		#	You can override this, and set this location manually
+
+    git status
+
+    git branch
+
+    git checkout master								# Switch to master at local
+
+    git branch -d my_first_branch						# Deletes this branch in local.  (I got prompted to run this following)
+
+    git branch -D my_first_branch
+
+
+
+
+
+
+Proof
+================
+Greg Gass
