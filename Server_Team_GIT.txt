@@ -86,8 +86,7 @@ Simple Exercise
     git branch -D my_first_branch
 
 
-
-
+5.  Go out to GitHub, look at this file and confirm you're change is there.
 
 
 Proof
