@@ -1,15 +1,27 @@
 [{
+  "id": "1",
   "name": "Web Database",
+  "longName": "This is the Web Database of Cashiering",
   "type": "Database",
-  "status": "Green"
+  "status": "Green",
+  "applicationId": "1",
+  "active": true
 },
 {
+  "id": "2",
   "name": "Payment Manager",
+  "longName": "This is Payment manager application",
   "type": "Application",
-  "status": "Yellow"
+  "status": "Yellow",
+  "applicationId": "1",
+  "active": true
 },
 {
+  "id": "3",
   "name": "Apache F5",
+  "longName": "This is the Apache F5 box",
   "type": "Network",
-  "status": "Green"
+  "status": "Green",
+  "applicationId": "1",
+  "active": true
 }]

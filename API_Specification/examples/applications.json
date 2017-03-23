@@ -1,3 +1,22 @@
-[{"name":"IRIS","status":"Green"},
-{"name":"BACP","status":"Yellow"},
-{"name":"Cashiering","status":"Red"}]
+[
+	{
+		"id": 1,
+		"name": "ARMS",
+		"status": "Green"
+	},
+	{
+		"id": 2,
+		"name": "Cashiering",
+		"status": "Red"
+	},
+	{
+		"id": 3,
+		"name": "HAN",
+		"status": "Yellow"
+	},
+	{
+		"id": 4,
+		"name": "IRIS",
+		"status": "Red"
+	}
+]

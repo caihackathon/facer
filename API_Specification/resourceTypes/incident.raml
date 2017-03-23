@@ -9,6 +9,10 @@ properties:
     description: Unique identifier for the Incident
     minLength: 3
     maxLength: 15
+  typeId:
+    type: string
+    displayName: Incident Type Id
+    description: Id of the incident type
   type:
     type: string
     displayName: Incident Type
@@ -22,11 +26,11 @@ properties:
     type: string
     displayName: Incident Details
     description: Detailed description of the incident
-  priority:
+  severity:
     type: string
     displayName: Incident Priority
     description: Priority of the Incident
-    enum: [High,Medium,Low]
+    enum: [SEVERE,MEDIUM,MILD]
   createdDate:
     type: datetime-only
     displayName: Incident Created Date
@@ -43,7 +47,27 @@ properties:
     type: string
     displayName: Incident Updator
     description: User/System last updated the Incident
+  resolvedDate:
+    type: datetime-only
+    displayName: Incident Resolved Date
+    description: Date & Time the incident was resolved
   assignedTo:
     type: string
     displayName: Incident Assignee
     description: User to which the incident is assigned to
+  applicationId:
+    type: string
+    displayName: Aplication Id
+    description: Aplication to which the incident is associated with
+  applicationName:
+    type: string
+    displayName: Aplication Name
+    description: Aplication name to which the incident is associated with
+  componentId:
+    type: string
+    displayName: Component Id
+    description: Component to which the incident is associated with
+  componentName:
+    type: string
+    displayName: Component Name
+    description: Component name to which the incident is associated with

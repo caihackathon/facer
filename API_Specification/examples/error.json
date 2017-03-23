@@ -1,5 +1,0 @@
-{
-  "code": 100,
-  "message": "Invalid user Id.",
-  "requestParameters": "/123/applications?status=Red"
-}

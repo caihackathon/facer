@@ -3,12 +3,24 @@ type: object
 displayName: Component
 description: This is a component in an application
 properties:
+  id:
+    type: string
+    displayName: Component Id
+    description: Unique identfier of the component
+    minLength: 1
+    maxLength: 11
   name:
     type: string
-    displayName: Component Name
-    description: This is the name of the application component. Examples are Reporting Database,Payment Manager Application, Crystal Report
+    displayName: Component Short Name
+    description: This is the short name of the application component.
+    minLength: 1
+    maxLength: 80
+  longName:
+    type: string
+    displayName: Component Long Name
+    description: This is the long name of the application component.
     minLength: 3
-    maxLength: 20
+    maxLength: 80
   type:
     type: string
     displayName: Component Type
@@ -20,3 +32,11 @@ properties:
     displayName: Component Status
     description: This is the status of the component.
     enum: [Green, Yellow, Red]
+  applicationId:
+    type: string
+    displayName: Application Id
+    description: Application Id to which the component is associated with
+  active:
+    type: boolean
+    displayName: Component Enabled
+    description: This tells whether the component is enabled in the system or not

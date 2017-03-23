@@ -1,0 +1,5 @@
+{
+  "code": 100,
+  "message": "Invalid user id specified.",
+  "requestParameters": "/applications?userId=dontgotoraghu"
+}

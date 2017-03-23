@@ -1,6 +1,6 @@
 #%RAML 1.0
 title: Facer
-version: v1
+version: v1 - Sprint2
 baseUri: http://api.facer.com
 securitySchemes:
   basic: !include securitySchemes/basic.raml
@@ -10,10 +10,9 @@ types:
   Application: !include resourceTypes/application.raml
   Event: !include resourceTypes/event.raml
   Comment: !include resourceTypes/comment.raml
-  Incident: !include resourceTypes/incidents.raml
+  Incident: !include resourceTypes/incident.raml
   Component: !include resourceTypes/component.raml
 
-securedBy: [basic]
 /applications:
   displayName: Applications
   description: This service provides information about the applications in the system
@@ -38,11 +37,7 @@ securedBy: [basic]
         body:
           application/json:
             type: Error
-            example: !include examples/error.json
-      401:
-        description: Authentication error
-      403:
-        description: Authorization error
+            example: !include examples/invalidUserError.json
 /components:
   displayName: Components
   description: This resource provides access to the applciation components
@@ -72,11 +67,7 @@ securedBy: [basic]
         body:
           application/json:
             type: Error
-            example: !include examples/error.json
-      401:
-        description: Authentication error
-      403:
-        description: Authorization error
+            example: !include examples/invalidApplicationError.json
 /incidents:
   displayName: Incidents
   description: This service provides the information about the incidents in the system
@@ -105,6 +96,13 @@ securedBy: [basic]
         body:
           application/json:
             type: Incident[]
+            example: !include examples/incidents.json
+      422:
+        description: This is a application error
+        body:
+          application/json:
+            type: Error
+            example: !include examples/invalidComponentError.json
   /{id}:
     displayName: Get Incident Details
     description: Get the details of an incident
@@ -123,10 +121,7 @@ securedBy: [basic]
           body:
             application/json:
               type: Error
-        401:
-          description: Authentication error
-        403:
-          description: Authorization error
+              example: !include examples/invalidComponentError.json
     put:
       displayName: Update Incident
       description: This call updates the incident details
@@ -138,17 +133,16 @@ securedBy: [basic]
           description: This is a successful response of an alert update
           body:
             application/json:
-              type: Incident
+              type: object
+              properties:
+                message: string
+              example:
+                {"message":"Incident updated successfully."}
         422:
           description: This is a application error
           body:
             application/json:
               type: Error
-        401:
-          description: Authentication error
-        403:
-          description: Authorization error
-
     delete:
       displayName: Delete Incident
       description: This call deletes the incident from the system
@@ -160,7 +154,3 @@ securedBy: [basic]
           body:
             application/json:
               type: Error
-        401:
-          description: Authentication error
-        403:
-          description: Authorization error

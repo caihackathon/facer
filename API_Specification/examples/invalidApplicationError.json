@@ -1,0 +1,5 @@
+{
+  "code": 100,
+  "message": "Invalid application id specified.",
+  "requestParameters": "/components?userId=gotoraghu&applicationId=notexists"
+}

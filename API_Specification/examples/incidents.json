@@ -1,4 +1,4 @@
-{
+[{
   "id": "10000001",
   "typeId": "1",
   "type": "Unavailability",
@@ -15,4 +15,22 @@
   "applicationName": "CASHIERING",
   "componentId": "10",
   "componentName": "CASHIERING"
-}
+},
+{
+  "id": "10000002",
+  "typeId": "2",
+  "type": "Unavailability",
+  "severity": "MEDIUM",
+  "createdDate": "2017-03-22T11:01:01",
+  "createdBy": "gotoraghu",
+  "lastUpdatedDate": "2017-03-22T11:01:01",
+  "lastUpdatedBy": "gotoraghu",
+  "resolvedDate": "2017-03-22T11:01:01",
+  "assignedTo": "rupaks",
+  "title": "AHMS unavailable",
+  "details": "Detailed description of why AHMS unavailable",
+  "applicationId": "2",
+  "applicationName": "ARMS",
+  "componentId": "2",
+  "componentName": "AHMS"
+}]

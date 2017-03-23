@@ -1,0 +1,5 @@
+{
+  "code": 100,
+  "message": "Invalid component id specified.",
+  "requestParameters": "/incidents?userId=gotoraghu&applicationId=2&componentId=invalidid"
+}
