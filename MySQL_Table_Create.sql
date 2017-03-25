@@ -512,6 +512,25 @@ CREATE TABLE IF NOT EXISTS MESSAGE_USER_TO_USER (
 );
 */
 
+-- =========================
+-- Procedure - Incident_Resolved
+-- =========================
+
+USE `facer`;
+DROP procedure IF EXISTS `p_Incident_Resolved`;
+
+DELIMITER $$
+USE `facer`$$
+CREATE PROCEDURE facer.p_Incident_Resolved ( IN i_Incident_ID int)
+BEGIN
+
+	UPDATE Incident
+    SET Incident_Resolved_Date = CURRENT_TIMESTAMP()
+    WHERE Incident_ID = i_Incident_ID;
+
+END;$$
+
+DELIMITER ;
 
 -- =========================
 -- Views
