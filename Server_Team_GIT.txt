@@ -1,6 +1,8 @@
 Git
 ============
-Git is a distributed revision control system.  This means that everybody keeps a copy of the entire repository on your machine, including the history of all previous changes.
+pj4g
+pj4g
+Gi444s a distributed revision control system.  This means that everybody keeps a copy of the entire repository on your machine, including the history of all previous changes.
 
 As a team, we could operate with just git installed on each of our machines, and not have a central server.  You'd just need agreement among the team on who would be the final keeper of the latest source code.  
 
@@ -92,3 +94,4 @@ Simple Exercise
 Proof
 ================
 Greg Gass
+Brian Bessler
